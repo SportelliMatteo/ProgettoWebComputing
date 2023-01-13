@@ -1,0 +1,25 @@
+.card{
+    max-width: 100%;
+    border-color: #272B30;
+    background-color: transparent;
+}
+
+.buttonPrenota{
+    display: flex;
+    flex-direction: row;
+    align-items: right;
+}
+
+.description{
+    display: flex;
+    flex-direction: row;
+}
+
+.cardContent{
+    color: #c5cfdb;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    height: 120px;
+}

@@ -1,0 +1,12 @@
+.social{
+    display: flex;
+    flex-direction: row; 
+}
+
+.facebook{
+    margin-right: 20px;
+}
+
+.containerFooter{
+    margin-top: 200px;
+}

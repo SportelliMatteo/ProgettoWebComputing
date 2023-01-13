@@ -1,0 +1,24 @@
+.app-bar-search-field {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
+    margin-left: 22px;
+}
+
+.app-bar-search {
+    height: 52px;
+    width: 550px;
+    border-radius: 10px;
+    border: 2;
+    background-color: transparent;
+    border-color: #c5cfdb;
+    color: #c5cfdb;
+}
+
+.app-bar-search-icon {
+    position: relative;
+    left: -40px;
+    color: white;
+    cursor: pointer;
+}

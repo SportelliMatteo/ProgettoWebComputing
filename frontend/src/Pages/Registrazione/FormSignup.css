@@ -1,0 +1,181 @@
+
+.App {
+  background-color: white;
+}
+
+.Auth-form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+}
+
+.Auth-form {
+  width: 420px;
+  box-shadow: rgb(0 0 0 / 16%) 1px 1px 10px;
+  padding-top: 30px;
+  padding-bottom: 20px;
+  border-radius: 8px;
+  background-color: #272B30;
+}
+
+.Auth-form-content {
+  padding-left: 12%;
+  padding-right: 12%;
+}
+
+.Auth-form-title {
+  text-align: center;
+  margin-bottom: 1em;
+  font-size: 24px;
+  color: #c5cfdb;
+  font-weight: 800;
+}
+
+label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #c5cfdb;
+}
+
+.text-center{
+  color: #c5cfdb;
+}
+
+.tipologiaUtente{
+  margin-top: 20px;
+}
+
+.button{
+  width: 100%;
+  border-radius: 5px;
+  color: white;
+  height: 35px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.buttonGoogle{
+  color: black;
+  width: 100%;
+  border-radius: 5px;
+  background-color: #854D27;
+  height: 42px;
+  border: none;
+}
+
+.buttonGoogle{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.googleIcon{
+  margin-right: 10px;
+}
+
+.informationIcon{
+  color: white;
+  margin-left: 10px;
+  width: 15px;
+  height: 15px;
+}
+
+.passwordBox{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-flow: row wrap;
+  max-width: 400px;
+  margin: 0 auto;
+  color: white;
+
+}
+
+.active-info {
+  transform: scale(1);
+}
+
+.Auth-form-container .error-label {
+  margin-top: 15px;
+  background-color: #464545;
+  box-sizing: border-box;
+  width: 100%;
+  border-radius: 8px;
+  height: fit-content;
+  padding: 5px 10px 6px 10px;
+  opacity: 0;
+  transform: scale(0);
+  transition: opacity 0.3s, transform 0.3s !important;
+  -webkit-transition: opacity 0.5s;
+}
+
+.Auth-form-container .label-active {
+  opacity: 1;
+  transform: scale(1);
+  transition: transform 0.3s;
+  -webkit-transition: opacity 0.3s;
+}
+
+.Auth-form-container .error-label p {
+  margin: 0px !important;
+  color: white;
+  max-width: 96%;
+  font-size: 0.9em !important;
+  font-weight: 500;
+  text-align: center !important;
+  white-space: initial !important;
+}
+
+.accedi {
+  max-width: 100%;
+  margin: 2%;
+  padding: 15px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.column-1 {
+  flex-shrink: 0; 
+  flex-basis: 55%;
+  max-width: 40%;
+}
+
+.box1 {
+  border-radius: 12px;
+  display: flex;
+  margin: 5rem;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.registrazione {
+  max-width: 100%;
+  margin: 2%;
+  padding: 15px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.column-1 {
+  flex-shrink: 0; 
+  flex-basis: 55%;
+  max-width: 40%;
+}
+
+.box1 {
+  border-radius: 12px;
+  display: flex;
+  margin: 5rem;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}

@@ -1,0 +1,499 @@
+.profile {
+    padding: 0px 10px 10px 10px;
+    min-height: 100vh;
+}
+
+.profile .loader {
+    display: flex;
+    align-items: center;
+    flex-flow: row wrap;
+    margin: 0 auto;
+    justify-content: space-evenly;
+}
+
+.paper-gray-account-settings {
+    background-color: var(--bg-color-gray);
+    border-radius: 8px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.paper-black-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    
+}
+
+.account-settings-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 50px;
+    width: 50%;
+    background-color: #272B30;
+    border-radius: 20px;
+    padding-left: 20px;
+}
+
+.account-settings-title {
+    font-size: 25px;
+    color: white;
+    font-weight: bold; 
+    margin: 0px;
+}
+
+.name-image-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding-top: 20px;
+}
+
+.name-image-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    position: relative;
+}
+
+.account-image {
+    width: 70px;
+    height: 72px;
+    border-radius: 50%;
+    margin-right: 20px;
+    
+}
+
+.image-pencil-container {
+    display: grid;
+}
+
+.pencil {
+    position: absolute;
+    width: 18px;
+    margin-left: 50px;
+    margin-top: -1px;
+    background-color: #5a5a5a;
+    border-radius: 50%;
+    padding: 3px 3px 4px 5px;
+    border: 2px solid var(--bg-color-gray);
+}
+
+.dropdown-edit-image {
+    border-radius: 10px;
+    background-color: var(--bg-color-dark);
+    position: absolute;
+    top: -10px;
+    left: 85px;
+    width: fit-content;
+}
+
+.dropdown-edit-image-list {
+   padding: 0;
+   margin: 0;
+   list-style-type: none; 
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   min-width: max-content;
+   padding: 5px 5px 5px 5px;
+   background-color: #5a5a5a;
+   border-radius: 20px;
+}
+
+.dropdown-edit-image-item {
+    font-size: 14px;
+    font-weight: bold;
+    color: white;
+    padding: 10px 10px 10px 10px;
+    margin: 0;
+    cursor: pointer;
+}
+
+.dropdown-edit-image-item:hover {
+    background-color: #5c5c5c;
+    border-radius: 10px;
+}
+
+.account-big-name {
+    margin: 0;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+}
+
+.paper-black-account-settings {
+    background-color: var(--bg-color-dark);
+    margin-top: 20px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding-bottom: 20px;
+}
+
+.properties-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.property-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 20px 0px 10px 20px;
+}
+
+.property-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+}
+
+.property-title {
+    color: white;
+    font-weight: bold;
+    font-size: 15px;
+    margin: 0;
+    margin-bottom: 10px;
+}
+
+.property-content {
+    color: white;
+    font-weight: bold !important;
+    font-size: 16px !important ;
+    margin:0;
+    border: 0;
+    padding: 0 !important;
+    background-color: var(--bg-color-black);
+    outline: none;
+}
+
+.property-content-editable {
+    background-color: white;
+    border-radius: 8px;
+    color: black;
+    font-weight: bold !important;
+    font-size: 16px !important ;
+    border: 0;
+    padding: 0px 0px 0px 5px !important;
+    outline: none;
+    width: 85%;
+    height: 38px;
+}
+
+
+.password-content {
+    background-color: var(--bg-color-black);
+    color: white;
+    font-weight: bold;
+    font-family: Verdana;
+    letter-spacing: 0.125em;
+    font-size: 14px !important;
+    max-width: 60%;
+    border: 0;
+    outline: none;
+    padding: 0;
+}
+
+.edit-button {
+    color: white;
+    background-color: black;
+    border-radius: 8px;  
+    font-weight: bold;
+    font-size: 15px;
+    margin: 0px 0px 0px 20px;
+    margin-right: 20px;
+    padding: 6px 14px 6px 14px;
+    cursor: pointer;
+}
+
+.property-spacer {
+    flex: 1 0 0;
+}
+
+.save-button {
+    color: white;
+    background-color: #854D27;
+    border-radius: 8px;  
+    font-weight: bold;
+    font-size: 16px;
+    margin: 0px;
+    padding: 8px 12px 8px 12px;
+    cursor: pointer;
+    width: 20%;
+    text-align: center;
+    margin: 20px 0px 5px 0px;
+}
+
+.background-blurrer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100vw;
+    height: 100vh;
+    z-index: 500;
+    background-color: rgba(31, 31, 31, 0.5);
+}
+
+.edit-password-popup {
+    box-sizing: border-box;
+    position: fixed;
+    width: 28%;
+    background-color: #5c5c5c;
+    border-radius: 10px;
+    padding-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.edit-password-list {
+    display: flex;
+    flex-direction: column;
+    list-style-type: none;
+    margin: 0;
+    margin-top: 30px;
+    padding: 0;
+    align-items: center;
+    width: 100%;
+}
+
+.edit-password-label-field-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+}
+
+.edit-password-label-field {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 88%;
+}
+
+.password-label {
+    color:white;
+    font-weight: bold;
+    font-size: 14px;
+    margin-bottom: 2px;
+}
+
+.password-content-editable {
+    background-color: white;
+    border-radius: 8px;
+    color: black;
+    font-weight: bold !important;
+    font-size: 16px !important ;
+    border: 0;
+    padding: 0px 0px 0px 5px !important;
+    outline: none;
+    height: 38px;
+    margin-bottom: 20px;
+}
+
+.password-content-editable:hover {
+    box-shadow: 0px 0px 10px 2px var(--bg-color-blue);
+}
+
+.popup-btn {
+    width: 88%;
+    text-align: center;
+    color: white;
+    padding: 10px 0px 10px 0px;
+    border-radius: 10px;
+    margin-bottom: 0px;
+    cursor: pointer;
+    font-weight: 500;
+    margin-top: 20px;
+}
+
+.popup-confirm {
+    background-color: #854D27;
+}
+
+.popup-cancel {
+    background-color: #854D27;
+}
+
+
+.sign-out-button {
+    color: white;
+    background-color: var(--light-gray-color);
+    border-radius: 8px;  
+    font-weight: bold;
+    font-size: 16px;
+    padding: 12px 16px 12px 16px;
+    cursor: pointer;
+    margin: 30px 0px 50px 0px;
+    max-width: 30%;
+}
+
+
+.profile .error-label {
+    margin-top: 10px;
+    background-color: #d14242;
+    box-sizing: border-box;
+    width: 88%;
+    border-radius: 8px;
+    height: fit-content;
+    padding: 5px 10px 6px 10px;
+    opacity: 0;
+    transform: scale(0);
+    transition: opacity 0.3s, transform 0.3s !important;
+    -webkit-transition: opacity 0.5s;
+}
+
+.profile .label-active {
+    opacity: 1;
+    transform: scale(1);
+    transition: transform 0.3s;
+    -webkit-transition: opacity 0.3s;
+}
+
+.profile .error-label p {
+    margin: 0px !important;
+    color: white;
+    max-width: 96%;
+    font-size: 0.9em !important;
+    font-weight: 500;
+    text-align: center !important;
+    white-space: initial !important;
+}
+
+.profile .error-label {
+    margin-top: 10px;
+    background-color: #d14242;
+    box-sizing: border-box;
+    width: 88%;
+    border-radius: 8px;
+    height: fit-content;
+    padding: 5px 10px 6px 10px;
+    opacity: 0;
+    transform: scale(0);
+    transition: opacity 0.3s, transform 0.3s !important;
+    -webkit-transition: opacity 0.5s;
+}
+
+.profile .error-label p {
+    margin: 0px !important;
+    color: white;
+    max-width: 96%;
+    font-size: 0.9em !important;
+    font-weight: 500;
+    text-align: center !important;
+    white-space: initial !important;
+}
+
+.profile .confirm-label {
+    margin-top: 10px;
+    background-color: #57aa3b;
+    box-sizing: border-box;
+    width: 88%;
+    border-radius: 8px;
+    height: fit-content;
+    padding: 5px 10px 6px 10px;
+    opacity: 0;
+    transform: scale(0);
+    transition: opacity 0.3s, transform 0.3s !important;
+    -webkit-transition: opacity 0.5s;
+}
+
+.profile .confirm-label p {
+    margin: 0px !important;
+    color: white;
+    max-width: 96%;
+    font-size: 0.9em !important;
+    font-weight: 500;
+    text-align: center !important;
+    white-space: initial !important;
+}
+
+.profile .label-active {
+    opacity: 1;
+    transform: scale(1);
+    transition: transform 0.3s;
+    -webkit-transition: opacity 0.3s;
+}
+
+@media only screen and (max-width: 1000px) {
+    .account-settings-wrapper {
+        width: 60% !important;
+    }
+
+    .edit-password-popup {
+        left: 25% !important;
+        width: 50% !important;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .account-settings-wrapper {
+        width: 88% !important;
+    }
+
+    .profile {
+        padding: 0px;
+    }
+
+    .paper-gray-account-settings {
+        border-radius: 0px;
+    }
+
+    .edit-password-popup {
+        left: 10% !important;
+        width: 80% !important;
+    }
+}
+
+.account-small-tipologia{
+    color: grey;
+}
+
+.containerModificaPrenotazioni{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 20px 0px 10px 20px;
+}
+
+.containerModificaPrenotazioniList{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+}

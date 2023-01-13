@@ -1,0 +1,9 @@
+.nav-link a{
+    text-decoration: none;
+    color: black;
+}
+
+.nav-link :hover{
+    text-decoration: none;
+    color: #9fa0a0;
+}
