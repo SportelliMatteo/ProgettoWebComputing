@@ -27,8 +27,14 @@ const rimuoviCliente = () => {
         data: JSON.stringify({
             'username': username,
         }),
-        success: function(resp) {
-            alert("Cliente rimosso con successo!");
+        success: function() {
+            $("#listaClienti").children('tr').each((idx, item) => {
+                if(item.children['0'].innerText === username) {
+                    item.remove();
+                    alert("Cliente rimosso con successo!");
+                    return;
+                }
+            });
         },
         error: function(err) {
             alert(err.responseJSON.msg);
@@ -49,8 +55,14 @@ const rimuoviRistorante = () => {
         data: JSON.stringify({
             'username': username,
         }),
-        success: function(resp) {
-            alert("Ristorante rimosso con successo!");
+        success: function() {
+            $("#listaRistoranti").children('tr').each((idx, item) => {
+                if(item.children['0'].innerText === username) {
+                    item.remove();
+                    alert("Ristorante rimosso con successo!");
+                    return;
+                }
+            });
         },
         error: function(err) {
             alert(err.responseJSON.msg);
@@ -71,51 +83,17 @@ const eliminaRecensione = () => {
         data: JSON.stringify({
             'codice_recensione': codice_recensione,
         }),
-        success: function(resp) {
-            alert("Recensione rimossa con successo!");
+        success: function() {
+            $("#listaRecensioni").children('tr').each((idx, item) => {
+                if(item.children['0'].innerText === codice_recensione) {
+                    item.remove();
+                    alert("Recensione rimossa con successo!");
+                    return;
+                }
+            });
         },
         error: function(err) {
             alert(err.responseJSON.msg);
         }
     })
-}
-
-//crea il nodo che conterrà il popup di conferma
-const confirmPopup = (title, text, onConfirm, onCancel) => {
-    const backgroundDiv = document.createElement("div");
-    backgroundDiv.className = "background-blurrer";
-
-    const popupDiv = document.createElement("div");
-    popupDiv.className = "confirm-popup";
-
-    const popupUl = document.createElement("ul");
-    popupUl.className = "popup-list";
-
-    const titleNode = document.createElement("p");
-    titleNode.className = "popup-title";
-    titleNode.innerText = title;
-
-    const textNode = document.createElement("span");
-    textNode.className = "popup-text";
-    textNode.innerText = text;
-
-    const confirmBtn = document.createElement("p");
-    confirmBtn.className = "popup-btn popup-confirm";
-    confirmBtn.innerText = "Confirm";
-    confirmBtn.onclick = onConfirm;
-
-    const cancelBtn = document.createElement("p");
-    cancelBtn.className = "popup-btn popup-cancel";
-    cancelBtn.innerText = "Cancel";
-    cancelBtn.onclick = onCancel;
-
-    popupUl.appendChild(titleNode);
-    popupUl.appendChild(textNode);
-    popupUl.appendChild(confirmBtn);
-    popupUl.appendChild(cancelBtn);
-
-    popupDiv.appendChild(popupUl);
-    backgroundDiv.appendChild(popupDiv);
-
-    return backgroundDiv;
 }

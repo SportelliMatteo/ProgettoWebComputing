@@ -46,7 +46,7 @@
                                 <th scope="col">Intolleranze</th>
                             </tr>
                             </thead>
-                            <tbody>
+                            <tbody id="listaClienti">
                             <c:forEach items="${clienti}" var="clienti" varStatus="loop">
                             <tr>
                                 <td>${clienti.usernameCliente}</td>
@@ -78,7 +78,7 @@
                                 <th scope="col">Intolleranze</th>
                             </tr>
                             </thead>
-                            <tbody>
+                            <tbody id="listaRistoranti">
                             <c:forEach items="${ristoranti}" var="ristoranti" varStatus="loop">
                             <tr>
                                 <td>${ristoranti.usernameRistoratore}</td>
@@ -111,7 +111,7 @@
                                 <th scope="col">Voto</th>
                             </tr>
                             </thead>
-                            <tbody>
+                            <tbody id="listaRecensioni">
                             <c:forEach items="${recensioni}" var="recensioni" varStatus="loop">
                             <tr>
                                 <td>${recensioni.id_recensione}</td>
