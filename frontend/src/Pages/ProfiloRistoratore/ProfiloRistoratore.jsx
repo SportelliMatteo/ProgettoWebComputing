@@ -181,12 +181,15 @@ const TabellaPrenotazioni = (props) =>{
     }
 
     useEffect(() => {
+        getPrenotazioniRistoratore();
+      }, []);
+
+      const getPrenotazioniRistoratore = () => {
         fetch(allPrenotazioniUrl, prenotazioniOptions)
             .then((res) => res.json())
             .then((result) => setAllPrenotazioni(result),
                 (error) => console.log("Error fetching all prenotazioni"));
-
-      }, [props.ristoratore]);
+      }
 
     //Conferma prenotazione
     const confermaPrenotazione = (event) => {
@@ -202,6 +205,7 @@ const TabellaPrenotazioni = (props) =>{
             .then(res => {
                 if(res.status === 200) {
                     props.showConfirm("Prenotazione confermata con successo!", 'form');
+                    getPrenotazioniRistoratore();
                 }
                 if(res.status === 5020) 
                     props.showError("Prenotazione non confermata, per favore riprova", 'form');
@@ -225,6 +229,7 @@ const TabellaPrenotazioni = (props) =>{
             .then(res => {
                 if(res.status === 200) {
                     props.showConfirm("Prenotazione rifiutata con successo!", 'form');
+                    getPrenotazioniRistoratore();   
                 }
                 if(res.status === 5020) 
                     props.showError("Prenotazione non rifiutata, per favore riprova", 'form');

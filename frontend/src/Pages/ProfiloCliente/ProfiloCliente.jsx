@@ -192,23 +192,6 @@ const NameAndImage = (props) => {
 }
 
 const TabellaPrenotazioni = (props) =>{
-    
-    const [allPrenotazioniCliente, setAllPrenotazioniCliente] = useState([]);
-
-    const prenotazioniClienteOptions = {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': props.accessToken
-        }
-    }
- 
-    useEffect(() => {
-        fetch(allPrenotazioniClienteUrl, prenotazioniClienteOptions)
-            .then((res) => res.json())
-            .then((result) => setAllPrenotazioniCliente(result),
-                (error) => console.log("Error fetching all prenotazioni cliente"));
-      }, []);
 
     //Cancella prenotazione
     const cancellaPrenotazione = (event) => {
@@ -224,6 +207,7 @@ const TabellaPrenotazioni = (props) =>{
             .then(res => {
                 if(res.status === 200) {
                     props.showConfirm("Prenotazione cancellata con successo!", 'form');
+                    props.getPrenotazioniCliente();
                 }
                 if(res.status === 5020) 
                     props.showError("Prenotazione non cancellata, per favore riprova", 'form');
@@ -260,7 +244,7 @@ const TabellaPrenotazioni = (props) =>{
                         </TableRow>
                     </TableHead>
                     <TableBody style={{backgroundColor:"lightgray" , border: "1px solid black"}}>
-                    {allPrenotazioniCliente.map((item, val) => (
+                    {props.allPrenotazioniCliente.map((item, val) => (
                         <TableRow
                             id="prenotazione"
                             sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
@@ -303,6 +287,7 @@ const ModificaPrenotazionePopup = (props) => {
     const [noteEditable, setNoteEditable] = useState(false);
     const [noteInputField, setNoteInputField] = useState("");
 
+
     function handleSelect(data){
         setTipologiaInputField(data.value);
     }
@@ -326,6 +311,7 @@ const ModificaPrenotazionePopup = (props) => {
 
     
     const updateTipologiaPrenotazione = () => {
+
         if(tipologiaInputField === ""){
             props.showError("Errore! Il campo tipologia è vuoto, per favore riprova", 'popup');    
             return;
@@ -337,6 +323,8 @@ const ModificaPrenotazionePopup = (props) => {
             .then(res => {
                 if(res.status === 200) {
                     props.showConfirm("Tipologia aggiornata con successo!", 'popup');
+                    props.getPrenotazioniCliente();
+                    tipologia = tipologiaInputField;
                 }
                 if(res.status === 413) {
                     props.showError("Non è possibile effettuare la modifica della prenotazione! Contatta il ristorante", 'popup');
@@ -348,6 +336,7 @@ const ModificaPrenotazionePopup = (props) => {
 
     //Data
     const updateDataPrenotazione = () => {
+        
         fetch(updateDataUrl, {method: 'POST',
                             headers: {
                                 'Authorization': codice_prenotazione,
@@ -361,13 +350,19 @@ const ModificaPrenotazionePopup = (props) => {
             .then(res => {
                 if(res.status === 200) {
                     props.showConfirm("Data aggiornata con successo!", 'popup');
+                    props.getPrenotazioniCliente();
+                    data = document.getElementById("dataPicker").value;
+                    setDataEditable(false);
                 }
                 if(res.status === 413) {
                     props.showError("Non è possibile effettuare la modifica della prenotazione poichè è stata già confermata oppure è già presente una prenotazione in questo giorno con questo orario! Contatta il ristorante", 'popup');
+                    setDataEditable(false);
                 }
                 if(res.status === 500)
-                    props.showError("Errore server! Per favore riprova più tardi", 'popup');;
+                    props.showError("Errore server! Per favore riprova più tardi", 'popup');
+                    setDataEditable(false);
             });
+            
     }
 
     //Orario
@@ -397,6 +392,8 @@ const ModificaPrenotazionePopup = (props) => {
             .then(res => {
                 if(res.status === 200) {
                     props.showConfirm("Orario aggiornato con successo!", 'popup');
+                    props.getPrenotazioniCliente();
+                    orario = orarioInputField;
                 }
                 if(res.status === 413) {
                     props.showError("Non è possibile effettuare la modifica della prenotazione! Contatta il ristorante", 'popup');
@@ -422,10 +419,15 @@ const ModificaPrenotazionePopup = (props) => {
 
     
     const updateNotePrenotazione = () => {
+
+        setNoteEditable(false);
+
         fetch(updateNoteUrl, updateNoteOptions)
             .then(res => {
                 if(res.status === 200) {
                     props.showConfirm("Note aggiornate con successo!", 'popup');
+                    props.getPrenotazioniCliente();
+                    note = noteInputField;
                 }
                 if(res.status === 413) {
                     props.showError("Non è possibile effettuare la modifica della prenotazione! Contatta il ristorante", 'popup');
@@ -763,6 +765,28 @@ const AccountInfo = (props) => {
     function _suggestionSelect(result, lat, long, text) {
         setIndirizzoInputField(lat + " " + long + ";" + result);
     }
+
+    //Get prenotazioni
+    const [allPrenotazioniCliente, setAllPrenotazioniCliente] = useState([]);
+
+    const prenotazioniClienteOptions = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': props.accessToken
+        }
+    }
+ 
+    useEffect(() => {
+        getPrenotazioniCliente();
+      }, []);
+
+    const getPrenotazioniCliente = () =>{
+        fetch(allPrenotazioniClienteUrl, prenotazioniClienteOptions)
+            .then((res) => res.json())
+            .then((result) => setAllPrenotazioniCliente(result),
+                (error) => console.log("Error fetching all prenotazioni cliente"));
+    }
     
 
     return (
@@ -896,6 +920,9 @@ const AccountInfo = (props) => {
 
                     abilitaModificaPrenotazione = {abilitaModificaPrenotazione}
 
+                    getPrenotazioniCliente = {getPrenotazioniCliente}
+                    allPrenotazioniCliente = {allPrenotazioniCliente}
+
                 />
 
                 {modificaPrenotazioneEditable === true &&
@@ -913,6 +940,8 @@ const AccountInfo = (props) => {
                         confirmMessage = {props.confirmMessage}
 
                         disabilitaModificaPrenotazione = {disabilitaModificaPrenotazione}
+
+                        getPrenotazioniCliente = {getPrenotazioniCliente}
                     />
                 }
                 
@@ -1071,25 +1100,6 @@ const optionsPreferiti = {
 
 const ScrollPreferiti = (props) => {
 
-    //Get preferiti
-    const [allPreferiti, setAllPreferiti] = useState([]);
-
-    const getPreferitiOptions = {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': props.accessToken
-        },
-    }
-
-    useEffect(() => {
-        fetch(getPreferitiUrl, getPreferitiOptions)
-            .then((res) => res.json())
-            .then((result) => setAllPreferiti(result),
-                (error) => console.log("Error fetching get preferiti cliente"));
-
-    }, []);
-
     const getCopertinaPic = (copertina) => {
         if(copertina === null || copertina === undefined || copertina === "")
             return require("../../Images/nessunImmagine.png");
@@ -1101,7 +1111,7 @@ const ScrollPreferiti = (props) => {
         <div>
             <h2 className='h2'> Ristoranti preferiti </h2>
             <OwlCarousel className="owl-theme" {...optionsPreferiti} items={3} nav margin={8}>
-                {allPreferiti.map((item, val) => (
+                {props.allPreferiti.map((item, val) => (
                     <div className='card'>
                         <Card sx={{ maxWidth: "100%" }}>
                             <CardActionArea>
@@ -1143,6 +1153,8 @@ const ProfiloCliente = (props) => {
         
         if(props.accessToken === "" && isEmptyObject(props.userLogged))
             navigate("/login");
+
+        getPreferitiCliente();
 
     }, [props.userLogged]);
 
@@ -1195,7 +1207,23 @@ const ProfiloCliente = (props) => {
         } 
     }
 
-   
+   //Get preferiti
+   const [allPreferiti, setAllPreferiti] = useState([]);
+
+   const getPreferitiOptions = {
+       method: 'POST',
+       headers: {
+           'Content-Type': 'application/json',
+           'Authorization': props.accessToken
+       },
+   }
+
+   const getPreferitiCliente = () =>{
+       fetch(getPreferitiUrl, getPreferitiOptions)
+           .then((res) => res.json())
+           .then((result) => setAllPreferiti(result),
+               (error) => console.log("Error fetching get preferiti cliente"));
+   }
 
     return(
         <div className="profile">
@@ -1237,6 +1265,7 @@ const ProfiloCliente = (props) => {
             </div>
                         <ScrollPreferiti 
                             accessToken={props.accessToken}
+                            allPreferiti = {allPreferiti}
                         />
                         
         </div>

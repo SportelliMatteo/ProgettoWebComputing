@@ -619,19 +619,21 @@ const Restaurant = (props) => {
               <div className="contactForm">
                   <div className="messaggio">
                       <div className="textArea">
-                      <Typography component="legend"></Typography>
-                          <Rating
-                            name="size-large"
-                            value={voto}
-                            size="large"
-                            onChange={(newValue)=>{
-                              setVoto(newValue.target.value);
-                            }
-                          }
-                          />
+                          <div className="stelleContainer">
+                            <Typography component="legend"></Typography>
+                            <Rating
+                                value={voto}
+                                name = 'custom-no-value'
+                                sx={{color:"white"}}
+                                onChange={(newValue)=>{
+                                  setVoto(newValue.target.value);
+                                }
+                              }
+                            />
+                            </div>
                           <textarea className="corpoRecensione" onChange={(e) => setTestoRecensione(e.target.value)} placeholder="Scrivi la tua recensione qui..."></textarea>
                           <br></br>
-                          <input type="file" ref={inputImage} accept=".jpg, .png, .jpeg" style={{backgroundColor: "#854D27", border:"none", width:"400px",borderRadius:"5px"  }} onChange={(e) => handleOnChange(e)} />
+                          <input type="file" ref={inputImage} accept=".jpg, .png, .jpeg" style={{backgroundColor: "#854D27", border:"none", width:"50%",borderRadius:"5px"  }} onChange={(e) => handleOnChange(e)} />
                       </div>
                   </div>
                   
@@ -646,7 +648,7 @@ const Restaurant = (props) => {
                   </div>
               )}
                   <div className="invioMessaggio">
-                      <button className="inviaRecensione" onClick={aggiungiRecensione} type="submit" style={{backgroundColor: "#854D27", border:"none", width:"200px"}}>Invia</button>
+                      <button className="inviaRecensione" onClick={aggiungiRecensione} type="submit" style={{backgroundColor: "#854D27", border:"none", width:"50%", marginTop:"10px"}}>Invia</button>
                   </div>    
               </div>
           </div>
