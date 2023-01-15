@@ -129,12 +129,14 @@ const Preferito = (props) =>{
 
   return(
     <div class="column-2 box2">
-              {props.isPreferito === false &&
+              {props.isPreferito === false && props.userLogged.tipologiaUtente !== "Ristoratore" &&
                 (<button className="heartButton" onClick={props.createPreferito}> <IonIcon id="cuore" className="heart1" icon={heartOutline}> </IonIcon> </button>)
               }
-              {props.isPreferito === true &&
+            
+              {props.isPreferito === true && props.userLogged.tipologiaUtente !== "Ristoratore" &&
                 (<button className="heartButton" onClick={props.deletePreferito}> <IonIcon id="cuorePieno" className="heart2" icon={heart}> </IonIcon> </button>)
               }
+           
           
             <p className="titleRestaurant"> <b> {props.ristorante.nome} </b></p>
             <p className="descriptionRestaurantTitle"> <b> <i> Chi siamo? </i> </b> </p>
@@ -312,6 +314,8 @@ const Restaurant = (props) => {
       .then(res => parseResponseRistoratore(res));
 
     getPreferito();
+
+    console.log(props.userLogged)
 
   }, [props.userLogged]);  
 
@@ -509,6 +513,7 @@ const Restaurant = (props) => {
             createPreferito = {createPreferito}
             deletePreferito = {deletePreferito}
             isPreferito = {isPreferito}
+            userLogged = {props.userLogged}
           />
 
           <div class="column-2 box2">
@@ -544,9 +549,11 @@ const Restaurant = (props) => {
                 <p> Tavolo per 2 persone </p>
                 <p> Disponibilità: {ristorante.tavolo2}</p>
                 </div>
+                {props.userLogged.tipologiaUtente !== "Ristoratore" && (
                 <button type="submit" className="buttonPrenota"  style={{backgroundColor: "#854D27", border:"none", color:"white", borderRadius:"5px", marginTop:"-10px"}} onClick={()=>{abilitaPrenotazioneDa2(); riepilogoPrenotazione("2 persone");}}>
                   PRENOTA
                 </button>
+                )}
               </CardContent>
 
           </Card>
@@ -556,9 +563,11 @@ const Restaurant = (props) => {
                 <p> Tavolo per 5 persone </p>
                 <p> Disponibilità: {ristorante.tavolo5} </p>
                 </div>
+                {props.userLogged.tipologiaUtente !== "Ristoratore" && (
                 <button type="submit" className="buttonPrenota" style={{backgroundColor: "#854D27", border:"none", color:"white", borderRadius:"5px", marginTop:"-10px"}} onClick={()=>{abilitaPrenotazioneDa5(); riepilogoPrenotazione("5 persone");}}>
                   PRENOTA
                 </button>
+                )}
               </CardContent>
 
           </Card>
@@ -568,9 +577,11 @@ const Restaurant = (props) => {
                 <p> Tavolo per 10 persone </p>
                  <p> Disponibilità: {ristorante.tavolo10} </p>
                 </div>
+                {props.userLogged.tipologiaUtente !== "Ristoratore" && (
                 <button type="submit" className="buttonPrenota"  style={{backgroundColor: "#854D27", border:"none", color:"white", borderRadius:"5px", marginTop:"-10px"}} onClick={()=>{abilitaPrenotazioneDa10(); riepilogoPrenotazione("10 persone");}}>
                   PRENOTA
                 </button>
+                )}
               </CardContent>
           </Card>  
           
@@ -612,7 +623,7 @@ const Restaurant = (props) => {
               confirmMessage = {confirmMessage}
             />
         }
-          {props.ristoratore.usernameRistoratore !== props.userLogged.username && (
+          {props.userLogged.tipologiaUtente !== "Ristoratore" && (
           <div className="recensioniContainer">
             
             <label className="recensioni"> Aggiugi una recensione </label>

@@ -34,17 +34,7 @@ public class PreferitoController {
             String nome = (String) body.get("nome");
             String copertina = (String) body.get("copertina");
 
-            List<Cliente> clienti = ClienteDaoJDBC.getInstance().getAll();
-            boolean check = false;
-            for (Cliente c : clienti){
-                if (c.getUsernameCliente().equals(user.getUsername())){
-                    check = true;
-                }else{
-                    check = false;
-                }
-            }
-
-            if (check){
+            if (ClienteDaoJDBC.getInstance().get(user.getUsername()) != null){
                 Preferito preferito = new Preferito();
                 preferito.setUsername_ristoratore(usernameRistoratore);
                 preferito.setUsername_cliente(user.getUsername());
@@ -85,20 +75,13 @@ public class PreferitoController {
         try {
 
             User user = UserDaoJDBC.getInstance().findByTokenWithAvatar(token);
+            System.out.println(user.getUsername());
             String usernameRistoratore = (String) body.get("usernameRistoratore");
+
             String nome = (String) body.get("nome");
 
-            List<Cliente> clienti = ClienteDaoJDBC.getInstance().getAll();
-            boolean check = false;
-            for (Cliente c : clienti){
-                if (c.getUsernameCliente().equals(user.getUsername())){
-                    check = true;
-                }else{
-                    check = false;
-                }
-            }
 
-            if (check){
+            if (ClienteDaoJDBC.getInstance().get(user.getUsername()) != null){
                 Preferito preferito = new Preferito();
                 preferito.setUsername_ristoratore(usernameRistoratore);
                 preferito.setUsername_cliente(user.getUsername());

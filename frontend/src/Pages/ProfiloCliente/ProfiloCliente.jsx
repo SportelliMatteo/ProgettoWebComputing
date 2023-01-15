@@ -214,7 +214,7 @@ const TabellaPrenotazioni = (props) =>{
                 if(res.status === 500)
                     props.showError("Errore server! Per favore riprova più tardi", 'form');
                 if(res.status === 412) 
-                    props.showError("Impossibile cancellare la prenotazione, è stata già accetata, contatta il ristorante!", 'form');
+                    props.showError("Impossibile cancellare la prenotazione, è stata già accettata, contatta il ristorante!", 'form');
             });
     }
 
