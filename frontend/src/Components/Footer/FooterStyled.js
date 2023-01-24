@@ -47,7 +47,21 @@ font-size: 18px;
 text-decoration: none;
 
 &:hover {
-	color: green;
+	color: #854D27;
+	transition: 200ms ease-in;
+}
+`;
+
+
+export const Contattaci = styled.p`
+color: #fff;
+margin-bottom: 20px;
+font-size: 18px;
+text-decoration: none;
+cursor: pointer;
+
+&:hover {
+	color: #854D27;
 	transition: 200ms ease-in;
 }
 `;

@@ -1,4 +1,5 @@
 import React from "react";
+import {Link } from 'react-router-dom';
 import './Footer.css'
 import {
 Box,
@@ -7,24 +8,26 @@ Row,
 Column,
 FooterLink,
 Heading,
+Contattaci,
 } from "./FooterStyled";
 
 export default function footer() {
+
+	function openEmail(){
+		window.open('mailto:restbookwebsite@gmail.com?subject=Richiesta assistenza')
+	}
+
 return (
 	<Box className="containerFooter">
 	<Container>
 		<Row>
 		<Column>
-			<Heading>Chi siamo?</Heading>
-			<FooterLink href="#">Chi siamo</FooterLink>
-		</Column>
-		<Column>
-			<Heading>Servizi</Heading>
-			<FooterLink href="#">Servizi</FooterLink>
+			<Heading>Ristoranti</Heading>
+			<FooterLink href="/">Ristoranti</FooterLink>
 		</Column>
 		<Column>
 			<Heading>Contatti</Heading>
-			<FooterLink href="#">Contattaci</FooterLink>
+			<Contattaci><p onClick={openEmail}>  Contattaci</p> </Contattaci>
 		</Column>
 		<Column>
 			<Heading>Social Media</Heading>
