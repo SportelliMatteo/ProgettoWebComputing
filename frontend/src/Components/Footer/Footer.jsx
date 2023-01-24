@@ -13,7 +13,10 @@ Contattaci,
 
 export default function footer() {
 
-	function openEmail(){
+	function openEmailContatti(){
+		window.open('mailto:restbookwebsite@gmail.com?subject=Richiesta informazioni')
+	}
+	function openEmailSegnalazioni(){
 		window.open('mailto:restbookwebsite@gmail.com?subject=Richiesta assistenza')
 	}
 
@@ -27,7 +30,11 @@ return (
 		</Column>
 		<Column>
 			<Heading>Contatti</Heading>
-			<Contattaci><p onClick={openEmail}>  Contattaci</p> </Contattaci>
+			<Contattaci><p onClick={openEmailContatti}>  Contattaci</p> </Contattaci>
+		</Column>
+		<Column>
+			<Heading>Segnalazioni</Heading>
+			<Contattaci><p onClick={openEmailSegnalazioni}> Assistenza </p> </Contattaci>
 		</Column>
 		<Column>
 			<Heading>Social Media</Heading>
